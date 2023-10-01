@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import Navbar from "../componetnts/Navbar";
+
 // import bgimg from "../assests/bike_background.jpg";
 import bgimg2 from "../assests/2.jpg";
 const Booking = () => {
@@ -34,7 +34,6 @@ const Booking = () => {
       className="min-h-screen bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${bgimg2})`, ...containerStyle }}
     >
-         <Navbar/>
        
       <div className=" bg-opacity-10 min-h-screen flex items-center justify-center">
         <div className="text-center" style={textStyle}>
