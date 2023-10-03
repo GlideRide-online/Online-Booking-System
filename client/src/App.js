@@ -2,6 +2,7 @@ import React from 'react'
 import Booking from './pages/Booking'
 import BookingForm from './pages/BookingForm';
 import Navbar from './componetnts/Navbar';
+import ThankYou from './pages/ThankYou';
 import {
   BrowserRouter,
   Routes, // instead of "Switch"
@@ -18,6 +19,7 @@ const App = () => {
 
           <Route path="/" element={<Booking />} />
           <Route path="/book-ride" element={<BookingForm />} />
+          <Route path="/thankyou" element={<ThankYou />} />
 
         </Routes>
       </BrowserRouter>
