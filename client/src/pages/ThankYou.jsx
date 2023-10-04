@@ -22,10 +22,7 @@ const ThankYou = () => {
               />
             </svg>
           </div>
-          <div
-            className="mt-3 text-xl font-semibold uppercase
-text-green-500"
-          >
+          <div className="mt-3 text-xl font-semibold uppercase text-green-500">
             Congratulations!
           </div>
           <div className="text-lg font-semibold text-gray-500">

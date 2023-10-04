@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Loading from "../componetnts/Loading"; // Import the Loading component
-// import bgimg from "../assests/bike_background.jpg";
+import Loading from "../componetnts/Loading";
 import bgimg2 from "../assests/2.jpg";
 const Booking = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
   const containerStyle = {
     backgroundColor: "#0A192F", // Background color
   };
@@ -28,16 +27,18 @@ const Booking = () => {
     backgroundColor: "#1A1110", // New background color on hover
     transform: "scale(1.05)", // Enlarge the button on hover
   };
-  const [isHovered, setIsHovered] = useState(false);
+
   useEffect(() => {
     // Simulate a delay to mimic loading (you can replace this with actual data loading)
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false);
     }, 2000); // Adjust the delay as needed
-
-    // Clean up the timeout on unmount
     return () => clearTimeout(loadingTimeout);
   }, []);
+
+  const googleLogin = async () => {
+    window.open("http://localhost:4000/auth/google", "_self");
+  };
   return (
     <>
       {isLoading ? (
@@ -56,19 +57,19 @@ const Booking = () => {
                 <p className="text-lg">
                   Explore our affordable bike rental service
                 </p>
-                <Link to="/book-ride">
-                  <button
-                    className="py-2 px-4 rounded-full mt-4"
-                    style={{
-                      ...buttonStyle,
-                      ...(isHovered ? buttonHoverStyle : {}),
-                    }}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                  >
-                    Procced for Booking
-                  </button>
-                </Link>
+
+                <button
+                  onClick={googleLogin}
+                  className="py-2 px-4 rounded-full mt-4"
+                  style={{
+                    ...buttonStyle,
+                    ...(isHovered ? buttonHoverStyle : {}),
+                  }}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
+                >
+                  <i className="fab fa-google mr-2"></i> Login with Google
+                </button>
               </div>
             </div>
           </div>
