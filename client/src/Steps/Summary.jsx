@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useBooking } from "../contexts/BookingDataContext";
 
 const Summary = () => {
+  const { state } = useBooking();
+  console.log(state);
   return (
     <>
       <div>Summary</div>

@@ -5,6 +5,7 @@ import StepperControl from "../componetnts/StepperControl";
 import Loading from "../componetnts/Loading";
 import Service from "../Steps/Service";
 import TimeSlot from "../Steps/TimeSlot";
+
 import PersonalDetails from "../Steps/PersonalDetails";
 import Summary from "../Steps/Summary";
 const BookingForm = () => {
