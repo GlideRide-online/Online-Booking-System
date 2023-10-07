@@ -68,7 +68,7 @@ const Booking = () => {
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                 >
-                  <i className="fab fa-google mr-2"></i> Login with Google
+                  <i className="fab fa-google mr-2"></i> Proceed with Google
                 </button>
               </div>
             </div>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const ThankYou = () => {
   return (
     <>
-      <div className="container md:mt-10">
+      <div className="container md:mt-10 mt-40">
         <div className="flex flex-col items-center">
           <div className="text-green-400">
             <svg

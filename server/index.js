@@ -9,10 +9,18 @@ const session = require("express-session");
 const jwt = require("jsonwebtoken");
 require("./passportAuth");
 const router = require("express").Router();
+const paymentRoute = require("./payment")
 
 //Connect MongoDB
 connectDB();
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+
+// razorpay Integration
+
+app.use("/api/checkout/", paymentRoute)
+
 
 // Initialize Passport and session management
 app.use(
@@ -38,7 +46,6 @@ app.get(
         scope: ["profile", "email"],
     })
 );
-
 app.get(
     "/auth/google/callback",
     passport.authenticate("google", {

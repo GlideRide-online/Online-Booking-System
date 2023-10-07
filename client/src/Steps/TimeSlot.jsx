@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useBooking } from "../contexts/BookingDataContext";
 import DateSelector from "../componetnts/DateSelector";
+import { message } from "antd";
 
 const TimeSlot = () => {
   const { state } = useBooking();
@@ -18,6 +19,7 @@ const TimeSlot = () => {
 
   const handleTimeSlotSelect = (slot) => {
     setSelectedTimeSlot(slot);
+    message.success("Time Selected");
   };
 
   const calculateTimeSlots = (duration, date) => {
@@ -55,8 +57,11 @@ const TimeSlot = () => {
         timeSlot: selectedTimeSlot,
       };
       fetch({ type: "UPDATE_STEP2", payload: bookingData });
+    } else if (selectedDate && !state.step1Data.name) {
+      message.error("Please Select Service");
     }
-  }, [selectedDate, selectedTimeSlot, fetch]);
+  }, [selectedDate, selectedTimeSlot, fetch, state.step1Data.name]);
+
   return (
     <>
       <div className="bg-gray-100 p-8 rounded-lg shadow-md">
@@ -74,7 +79,7 @@ const TimeSlot = () => {
             <div
               key={index}
               className={`p-4 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transform transition-transform duration-300 cursor-pointer ${
-                selectedTimeSlot === slot ? "bg-blue-100" : "bg-white"
+                selectedTimeSlot === slot ? "bg-blue-300" : "bg-white"
               }`}
               onClick={() => handleTimeSlotSelect(slot)}
             >

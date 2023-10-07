@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useUser } from "../contexts/UserContext";
 import { useBooking } from "../contexts/BookingDataContext";
+import { message } from "antd";
 
 const PersonalDetails = () => {
   const { userstate } = useUser();
@@ -13,6 +14,7 @@ const PersonalDetails = () => {
   const [gender, setGender] = useState("");
   const [age, setAge] = useState("");
   const fullname = userstate.user.firstName + " " + userstate.user.lastName;
+
   const handleSave = (e) => {
     e.preventDefault();
     if (
@@ -35,6 +37,7 @@ const PersonalDetails = () => {
       };
       fetch({ type: "UPDATE_STEP3", payload: userPersonalData });
     }
+    message.success("Saved Succesfully");
   };
 
   return (

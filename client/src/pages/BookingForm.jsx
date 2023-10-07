@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { StepperContext } from "../contexts/StepperContext";
 import Stepper from "../componetnts/Stepper";
 import StepperControl from "../componetnts/StepperControl";
 import Loading from "../componetnts/Loading";
@@ -10,10 +9,9 @@ import PersonalDetails from "../Steps/PersonalDetails";
 import Summary from "../Steps/Summary";
 const BookingForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [userData, setUserData] = useState("");
-  const [finalData, setFinalData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const steps = ["Service", "Date & Time Slot", " Details", "Summary"];
+  const token = localStorage.getItem("token");
   const displayStep = (step) => {
     switch (step) {
       case 1:
@@ -54,20 +52,20 @@ const BookingForm = () => {
               <Stepper steps={steps} currentStep={currentStep} />
             </div>
             {/* Display Components */}
-            <div className="my-10 p-10">
-              <StepperContext.Provider
-                value={{ userData, setUserData, finalData, setFinalData }}
-              >
-                {displayStep(currentStep)}
-              </StepperContext.Provider>
-            </div>
+            <div className="my-10 p-10">{displayStep(currentStep)}</div>
             {/* Stepper Controls */}
-            {currentStep !== steps.length && (
-              <StepperControl
-                handleClick={handleClick}
-                steps={steps}
-                currentStep={currentStep}
-              />
+            {token ? (
+              <>
+                {currentStep !== steps.length && (
+                  <StepperControl
+                    handleClick={handleClick}
+                    steps={steps}
+                    currentStep={currentStep}
+                  />
+                )}
+              </>
+            ) : (
+              <>{console.log("You Are Not login")}</>
             )}
           </div>
         </>

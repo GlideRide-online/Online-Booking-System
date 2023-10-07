@@ -5,6 +5,7 @@ import jwtDecode from "jwt-decode";
 import img from "../assests/service.png";
 import { Link } from "react-router-dom";
 import { useBooking } from "../contexts/BookingDataContext";
+import { message } from "antd";
 const Service = () => {
   const location = useLocation();
   const [selectedService, setSelectedService] = useState(null);
@@ -37,6 +38,7 @@ const Service = () => {
   const handleServiceSelect = (service) => {
     setSelectedService(service);
     fetch({ type: "UPDATE_STEP1", payload: service });
+    message.success("Service Selected");
   };
   useEffect(() => {
     // Create a flag to track whether the effect has already run
@@ -86,7 +88,7 @@ const Service = () => {
                 key={service.id}
                 className={`border p-4 cursor-pointer transition duration-300 ${
                   selectedService === service
-                    ? "border-black transform scale-105"
+                    ? "bg-slate-500"
                     : "border-gray-300 hover:border-black hover:transform hover:scale-105"
                 }`}
                 onClick={() => handleServiceSelect(service)}
