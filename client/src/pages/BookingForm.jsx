@@ -4,14 +4,16 @@ import StepperControl from "../componetnts/StepperControl";
 import Loading from "../componetnts/Loading";
 import Service from "../Steps/Service";
 import TimeSlot from "../Steps/TimeSlot";
+import { useLocation } from "react-router-dom";
 
 import PersonalDetails from "../Steps/PersonalDetails";
 import Summary from "../Steps/Summary";
 const BookingForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const location = useLocation();
   const [isLoading, setIsLoading] = useState(true);
   const steps = ["Service", "Date & Time Slot", " Details", "Summary"];
-  const token = localStorage.getItem("token");
+  // const token = localStorage.getItem("token");
   const displayStep = (step) => {
     switch (step) {
       case 1:
@@ -25,6 +27,7 @@ const BookingForm = () => {
       default:
     }
   };
+  const token = new URLSearchParams(location.search).get("token");
   const handleClick = (direction) => {
     let newStep = currentStep;
     direction === "next" ? newStep++ : newStep--;

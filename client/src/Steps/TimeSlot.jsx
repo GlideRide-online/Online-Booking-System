@@ -12,9 +12,14 @@ const TimeSlot = () => {
   const duration = state.step1Data.duration;
 
   const handleDateChange = (date) => {
-    setSelectedDate(date);
-    const timeSlots = calculateTimeSlots(duration, date);
-    setAvailableTimeSlots(timeSlots);
+    const currentDate = new Date();
+    if (date < currentDate) {
+      message.error("Please select a date after the current date");
+    } else if (date >= currentDate) {
+      setSelectedDate(date);
+      const timeSlots = calculateTimeSlots(duration, date);
+      setAvailableTimeSlots(timeSlots);
+    }
   };
 
   const handleTimeSlotSelect = (slot) => {

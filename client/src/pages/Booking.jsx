@@ -4,6 +4,7 @@ import bgimg2 from "../assests/2.jpg";
 const Booking = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const containerStyle = {
     backgroundColor: "#0A192F", // Background color
   };
@@ -30,6 +31,11 @@ const Booking = () => {
 
   useEffect(() => {
     // Simulate a delay to mimic loading (you can replace this with actual data loading)
+    const image = new Image();
+    image.src = bgimg2;
+    image.onload = () => {
+      setImageLoaded(true);
+    };
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false);
     }, 2000); // Adjust the delay as needed
@@ -46,7 +52,9 @@ const Booking = () => {
       ) : (
         <>
           <div
-            className="min-h-screen bg-cover bg-center bg-no-repeat"
+            className={`min-h-screen bg-cover bg-center bg-no-repeat${
+              imageLoaded ? "" : "hidden"
+            }`}
             style={{ backgroundImage: `url(${bgimg2})`, ...containerStyle }}
           >
             <div className=" bg-opacity-10 min-h-screen flex items-center justify-center">

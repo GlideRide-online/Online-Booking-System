@@ -15,6 +15,33 @@ const Summary = () => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(date).toLocaleDateString(undefined, options);
   }
+
+  const sentEmail = async () => {
+    const config = {
+      SecureToken: "75ad2317-2c13-4dc2-9966-67851d975a53",
+      To: state.step3Data.email,
+      From: "contact@glideride.online",
+      Subject: "Congratulations on Booking Your ride",
+      Body: `
+      <p>Dear ${state.step3Data.name},</p>
+      <p>Thank you for booking your ride with Glideride Online!</p>
+      <p>Your Booking Ride Details:</p>
+      <ul>
+        <li>Date: ${state.step2Data.date}</li>
+        <li>Time Slot: ${state.step2Data.timeSlot.start} to ${state.step2Data.timeSlot.end}</li>
+        <li>Service Price: ${state.step1Data.price} (to be paid at the time of pickup)</li>
+        <li>Security Deposit: ${state.step1Data.securtiy}(already paid)</li>
+      </ul>
+      <p>We hope you have a fantastic experience with us. Feel free to contact us if you have any questions or need assistance.</p>
+      <p>Safe travels!</p>
+      <p>Contact: 7310691665 (Call Us for any query)
+    `,
+    };
+    if (window.Email) {
+      const respone = await window.Email.send(config);
+      console.log(respone);
+    }
+  };
   const handleReload = () => {
     window.location.reload();
   };
@@ -33,6 +60,7 @@ const Summary = () => {
           const { data } = await axios.post(verifyUrl, response);
 
           if (data.success) {
+            sentEmail();
             navigate("/thankyou");
           }
         } catch (error) {
