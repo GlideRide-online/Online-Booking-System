@@ -5,6 +5,7 @@ import Navbar from "./componetnts/Navbar";
 import ThankYou from "./pages/ThankYou";
 import { UserProvider } from "./contexts/UserContext";
 import { BookingProvider } from "./contexts/BookingDataContext";
+// import NoRIdeAvailable from "./pages/NoRIdeAvailable";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -14,6 +15,7 @@ const App = () => {
 
       <BrowserRouter>
         <Navbar />
+        {/* <NoRIdeAvailable /> */}
         <BookingProvider>
           <UserProvider>
             <Routes>

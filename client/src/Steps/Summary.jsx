@@ -8,6 +8,7 @@ import img from "../assests/service.png";
 
 const Summary = () => {
   const { state } = useBooking();
+  console.log(state);
   const navigate = useNavigate();
   const priceString = state.step1Data.securtiy;
   const numericValue = Number(priceString.replace(/[^0-9]/g, ""));
@@ -46,6 +47,7 @@ const Summary = () => {
     window.location.reload();
   };
   const initPayment = (data) => {
+    console.log(data.amount);
     const options = {
       key: process.env.RAZORPAY_KEY_ID,
       amount: data.amount,
@@ -62,6 +64,8 @@ const Summary = () => {
           if (data.success) {
             sentEmail();
             navigate("/thankyou");
+          } else {
+            console.log("something went wrong");
           }
         } catch (error) {
           console.log(error);
@@ -180,7 +184,10 @@ const Summary = () => {
               >
                 Pay Now {state.step1Data.securtiy}
               </button>
-              <button className="bg-blue-500 font-mono hover:bg-blue-600 text-white px-6 py-2 rounded-md font-semibold transition duration-300">
+              <button
+                onClick={handleReload}
+                className="bg-blue-500 font-mono hover:bg-blue-600 text-white px-6 py-2 rounded-md font-semibold transition duration-300"
+              >
                 Fill Details Again
               </button>
             </div>

@@ -3,6 +3,7 @@ const Razorpay = require("razorpay");
 const crypto = require("crypto");
 
 router.post("/orders", async (req, res) => {
+    console.log(req.body)
     try {
 
         const instance = new Razorpay({

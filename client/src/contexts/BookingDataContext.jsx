@@ -5,7 +5,7 @@ const BookingContext = createContext();
 const initialState = {
   step1Data: {}, // Data for step 1
   step2Data: {}, // Data for step 2
-  // Add more properties for each step as needed
+  step3Data: {},
 };
 
 function bookingReducer(state, action) {
