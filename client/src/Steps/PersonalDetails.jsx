@@ -119,22 +119,35 @@ const PersonalDetails = () => {
                   required
                 />
               </div>
-              <div className="mb-4">
+              <div className="mb-4 relative">
                 <label
                   htmlFor="phoneNumber"
                   className="block text-lg font-medium text-gray-700"
                 >
-                  Whatsapp Phone Number
+                  WhatsApp Phone Number
                 </label>
-                <input
-                  type="tel"
-                  id="phoneNumber"
-                  className="w-full mt-1 p-2 rounded-md border border-gray-300"
-                  placeholder="123-456-7890"
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  required
-                />
+                <div className="relative">
+                  <span className="absolute left-2 top-1/2 transform -translate-y-1/2">
+                    <img
+                      src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png"
+                      alt="Indian Flag"
+                      className="w-4 h-4"
+                    />
+                  </span>
+                  <span className="absolute left-7 top-1/2 transform -translate-y-1/2">
+                    +91
+                  </span>
+                  <input
+                    type="tel"
+                    id="phoneNumber"
+                    className="w-full mt-0 p-2 rounded-md border border-gray-300 pl-14"
+                    placeholder="1234567890"
+                    value={phoneNumber}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
+                    maxLength="10"
+                    required
+                  />
+                </div>
               </div>
               <div className="mb-4">
                 <label
@@ -143,15 +156,17 @@ const PersonalDetails = () => {
                 >
                   College Name
                 </label>
-                <input
-                  type="text"
-                  id="college"
+                <select
+                  id="gender"
                   className="w-full mt-1 p-2 rounded-md border border-gray-300"
-                  placeholder="123-456-7890"
                   value={collegeName}
                   onChange={(e) => setCollegeName(e.target.value)}
                   required
-                />
+                >
+                  <option value="">Select College</option>
+                  <option value="kiet">Kiet</option>
+                  <option value="its">ITS</option>
+                </select>
               </div>
               <div className="mb-4">
                 <label
@@ -160,15 +175,19 @@ const PersonalDetails = () => {
                 >
                   College Year
                 </label>
-                <input
-                  type="number"
-                  id="collegeyear"
+                <select
+                  id="gender"
                   className="w-full mt-1 p-2 rounded-md border border-gray-300"
-                  placeholder="123-456-7890"
                   value={collegeYear}
                   onChange={(e) => setCollegeYear(e.target.value)}
                   required
-                />
+                >
+                  <option value="">College Year</option>
+                  <option value="1st">1st</option>
+                  <option value="2nd">2nd</option>
+                  <option value="3rd">3rd</option>
+                  <option value="4th">4th</option>
+                </select>
               </div>
               <div className="mt-4">
                 <button
