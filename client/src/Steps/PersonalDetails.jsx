@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useUser } from "../contexts/UserContext";
 import { useBooking } from "../contexts/BookingDataContext";
 import { message } from "antd";
+import UserDataCheck from "./UserCheck.json";
 
 const PersonalDetails = () => {
   const { userstate } = useUser();
@@ -12,6 +13,7 @@ const PersonalDetails = () => {
   const [collegeName, setCollegeName] = useState("");
   const [collegeYear, setCollegeYear] = useState("");
   const [gender, setGender] = useState("");
+  const [collegeLibId, setCollegeLibId] = useState("");
   const [age, setAge] = useState("");
   const fullname = userstate.user.firstName + " " + userstate.user.lastName;
 
@@ -23,6 +25,8 @@ const PersonalDetails = () => {
       phoneNumber &&
       collegeName &&
       collegeYear &&
+      collegeLibId &&
+      collegeLibId === UserDataCheck.user.libraryId &&
       gender &&
       age
     ) {
@@ -30,14 +34,17 @@ const PersonalDetails = () => {
         name: name,
         email: email,
         phoneNumber: phoneNumber,
+        LibraryId: collegeLibId,
         collegeName: collegeName,
         collegeYear: collegeYear,
         gender: gender,
         age: age,
       };
       fetch({ type: "UPDATE_STEP3", payload: userPersonalData });
+      message.success("Saved Succesfully");
+    } else {
+      message.error("Incorrect Library Id");
     }
-    message.success("Saved Succesfully");
   };
 
   return (
@@ -167,6 +174,23 @@ const PersonalDetails = () => {
                   <option value="kiet">Kiet</option>
                   <option value="its">ITS</option>
                 </select>
+              </div>
+              <div className="mb-4">
+                <label
+                  htmlFor="age"
+                  className="block text-lg font-medium text-gray-700"
+                >
+                  College Library Id
+                </label>
+                <input
+                  type="text"
+                  id="age"
+                  className="w-full mt-1 p-2 rounded-md border border-gray-300"
+                  placeholder="Eg. 2024IT1031"
+                  value={collegeLibId}
+                  onChange={(e) => setCollegeLibId(e.target.value)}
+                  required
+                />
               </div>
               <div className="mb-4">
                 <label
