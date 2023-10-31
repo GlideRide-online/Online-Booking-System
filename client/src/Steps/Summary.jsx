@@ -8,7 +8,6 @@ import img from "../assests/service.png";
 
 const Summary = () => {
   const { state } = useBooking();
-  console.log(state);
   const navigate = useNavigate();
   const priceString = state.step1Data.securtiy;
   const numericValue = Number(priceString.replace(/[^0-9]/g, ""));

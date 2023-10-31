@@ -13,9 +13,10 @@ const TimeSlot = () => {
 
   const handleDateChange = (date) => {
     const currentDate = new Date();
+    currentDate.setHours(0, 0, 0, 0);
     if (date < currentDate) {
       message.error("Please select a date after the current date");
-    } else if (date >= currentDate) {
+    } else {
       setSelectedDate(date);
       const timeSlots = calculateTimeSlots(duration, date);
       setAvailableTimeSlots(timeSlots);

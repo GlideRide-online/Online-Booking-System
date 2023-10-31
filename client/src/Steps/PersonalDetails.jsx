@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useUser } from "../contexts/UserContext";
 import { useBooking } from "../contexts/BookingDataContext";
 import { message } from "antd";
-import UserDataCheck from "./UserCheck.json";
 
 const PersonalDetails = () => {
   const { userstate } = useUser();
@@ -13,7 +12,7 @@ const PersonalDetails = () => {
   const [collegeName, setCollegeName] = useState("");
   const [collegeYear, setCollegeYear] = useState("");
   const [gender, setGender] = useState("");
-  const [collegeLibId, setCollegeLibId] = useState("");
+  // const [collegeLibId, setCollegeLibId] = useState("");
   const [age, setAge] = useState("");
   const fullname = userstate.user.firstName + " " + userstate.user.lastName;
 
@@ -25,8 +24,6 @@ const PersonalDetails = () => {
       phoneNumber &&
       collegeName &&
       collegeYear &&
-      collegeLibId &&
-      collegeLibId === UserDataCheck.user.libraryId &&
       gender &&
       age
     ) {
@@ -34,7 +31,6 @@ const PersonalDetails = () => {
         name: name,
         email: email,
         phoneNumber: phoneNumber,
-        LibraryId: collegeLibId,
         collegeName: collegeName,
         collegeYear: collegeYear,
         gender: gender,
@@ -175,7 +171,7 @@ const PersonalDetails = () => {
                   <option value="its">ITS</option>
                 </select>
               </div>
-              <div className="mb-4">
+              {/* <div className="mb-4">
                 <label
                   htmlFor="age"
                   className="block text-lg font-medium text-gray-700"
@@ -191,7 +187,7 @@ const PersonalDetails = () => {
                   onChange={(e) => setCollegeLibId(e.target.value)}
                   required
                 />
-              </div>
+              </div> */}
               <div className="mb-4">
                 <label
                   htmlFor="phoneNumber"
