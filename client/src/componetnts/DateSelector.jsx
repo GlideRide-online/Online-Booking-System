@@ -6,7 +6,9 @@ const DateSelector = ({ selectedDate, handleDateChange }) => {
   return (
     <>
       <div className="mb-4">
-        <label className="block text-lg font-semibold mb-4">Select Date:</label>
+        <label className="block text-lg font-semibold mb-4 font-mono">
+          Select Date:
+        </label>
         <DatePicker
           selected={selectedDate}
           onChange={handleDateChange}

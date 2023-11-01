@@ -48,12 +48,14 @@ const PersonalDetails = () => {
       {state.step2Data.timeSlot ? (
         <>
           <div className="bg-gray-100 p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold mb-4">Personal Details</h2>
+            <h2 className="text-2xl font-semibold mb-4 font-mono">
+              Personal Details
+            </h2>
             <form onSubmit={handleSave} autoComplete="off">
               <div className="mb-4">
                 <label
                   htmlFor="name"
-                  className="block text-lg font-medium text-gray-700"
+                  className="block text-lg font-medium text-gray-700 font-mono"
                 >
                   Full Name
                 </label>
@@ -70,7 +72,7 @@ const PersonalDetails = () => {
               <div className="mb-4">
                 <label
                   htmlFor="email"
-                  className="block text-lg font-medium text-gray-700"
+                  className="block text-lg font-medium text-gray-700 font-mono"
                 >
                   Email Address
                 </label>
@@ -88,7 +90,7 @@ const PersonalDetails = () => {
               <div className="mb-4">
                 <label
                   htmlFor="gender"
-                  className="block text-lg font-medium text-gray-700"
+                  className="block text-lg font-medium text-gray-700 font-mono"
                 >
                   Gender
                 </label>
@@ -108,14 +110,14 @@ const PersonalDetails = () => {
               <div className="mb-4">
                 <label
                   htmlFor="age"
-                  className="block text-lg font-medium text-gray-700"
+                  className="block text-lg font-medium text-gray-700 font-mono"
                 >
                   Age
                 </label>
                 <input
                   type="number"
                   id="age"
-                  className="w-full mt-1 p-2 rounded-md border border-gray-300"
+                  className="w-full mt-1 p-2 rounded-md border border-gray-300 font-mono"
                   placeholder="Enter Age"
                   value={age}
                   onChange={(e) => setAge(e.target.value)}
@@ -125,7 +127,7 @@ const PersonalDetails = () => {
               <div className="mb-4 relative">
                 <label
                   htmlFor="phoneNumber"
-                  className="block text-lg font-medium text-gray-700"
+                  className="block text-lg font-medium text-gray-700 font-mono"
                 >
                   WhatsApp Phone Number
                 </label>
@@ -155,7 +157,7 @@ const PersonalDetails = () => {
               <div className="mb-4">
                 <label
                   htmlFor="phoneNumber"
-                  className="block text-lg font-medium text-gray-700"
+                  className="block text-lg font-medium text-gray-700 font-mono"
                 >
                   College Name
                 </label>
@@ -191,13 +193,13 @@ const PersonalDetails = () => {
               <div className="mb-4">
                 <label
                   htmlFor="phoneNumber"
-                  className="block text-lg font-medium text-gray-700"
+                  className="block text-lg font-medium text-gray-700 font-mono"
                 >
                   College Year
                 </label>
                 <select
                   id="gender"
-                  className="w-full mt-1 p-2 rounded-md border border-gray-300"
+                  className="w-full mt-1 p-2 rounded-md border border-gray-300 font-mono"
                   value={collegeYear}
                   onChange={(e) => setCollegeYear(e.target.value)}
                   required
@@ -212,7 +214,7 @@ const PersonalDetails = () => {
               <div className="mt-4">
                 <button
                   type="submit"
-                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300"
+                  className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-300 font-mono"
                 >
                   Save
                 </button>

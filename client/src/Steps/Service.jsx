@@ -79,7 +79,7 @@ const Service = () => {
         </>
       ) : (
         <>
-          <h2 className="text-3xl font-bold text-black mb-6">
+          <h2 className="text-3xl font-bold text-black mb-6 font-mono">
             Select a Service
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -102,9 +102,13 @@ const Service = () => {
                   />
                   {/* Right-hand side: Service name and price */}
                   <div>
-                    <h3 className="text-lg font-semibold">{service.name}</h3>
-                    <p className="text-gray-600">Price - {service.price}</p>
-                    <p className="text-gray-600">
+                    <h3 className="text-lg font-semibold font-mono">
+                      {service.name}
+                    </h3>
+                    <p className="text-gray-600 font-mono">
+                      Price - {service.price}
+                    </p>
+                    <p className="text-gray-600 font-mono">
                       Security - {service.securtiy}
                     </p>
                   </div>

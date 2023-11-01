@@ -111,64 +111,60 @@ const Summary = () => {
         <>
           {message.info("Please Check All Your Details before Payment")}
           <div className="bg-gray-100 font-bold p-4 md:p-8 rounded-lg shadow-md grid grid-cols-1 md:grid-cols-2 gap-4">
-            <h2 className="text-3xl font-semibold mb-4">Summary</h2>
+            <h2 className="text-3xl font-semibold mb-4 font-mono">Summary</h2>
             <div className="mb-4">
-              <h3 className="text-lg font-medium font-mono text-blue-600">
+              <h3 className="text-lg font-mono text-blue-600">
                 Service Selected:
               </h3>
-              <p className="text-gray-700 font-serif">{state.step1Data.name}</p>
+              <p className="text-gray-700 font-mono">{state.step1Data.name}</p>
             </div>
             <div>
-              <h3 className="text-lg font-medium font-mono text-blue-600">
-                Date:
-              </h3>
-              <p className="text-gray-700 font-serif">
+              <h3 className="text-lg  font-mono text-blue-600">Date:</h3>
+              <p className="text-gray-700 font-mono">
                 {formatDate(state.step2Data.date)}
               </p>
             </div>
             <div className="mb-4">
-              <h3 className="text-lg font-medium font-mono text-blue-600">
-                Time Slot:
-              </h3>
-              <p className="text-gray-700 font-serif">
+              <h3 className="text-lg font-mono text-blue-600">Time Slot:</h3>
+              <p className="text-gray-700 font-mono">
                 {state.step2Data.timeSlot.start} to{" "}
                 {state.step2Data.timeSlot.end}
               </p>
             </div>
             <div className="mb-4">
-              <h3 className="text-lg font-medium font-mono text-blue-600">
+              <h3 className="text-lg font-mono text-blue-600">
                 Personal Details:
               </h3>
-              <p className="text-gray-700 font-serif">
+              <p className="text-gray-700 font-mono">
                 Name: {state.step3Data.name}
               </p>
-              <p className="text-gray-700 font-serif">
+              <p className="text-gray-700 font-mono">
                 Email: {state.step3Data.email}
               </p>
-              <p className="text-gray-700 font-serif">
+              <p className="text-gray-700 font-mono">
                 Phone Number: {state.step3Data.phoneNumber}
               </p>
-              <p className="text-gray-700 font-serif">
+              <p className="text-gray-700 font-mono">
                 Gender: {state.step3Data.gender}
               </p>
-              <p className="text-gray-700 font-serif">
+              <p className="text-gray-700 font-mono">
                 Age: {state.step3Data.age}
               </p>
-              <p className="text-gray-700 font-serif">
+              <p className="text-gray-700 font-mono">
                 College Name: {state.step3Data.collegeName}
               </p>
-              <p className="text-gray-700 font-serif">
+              <p className="text-gray-700 font-mono">
                 College Year: {state.step3Data.collegeYear}
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-medium font-mono text-blue-600">
+              <h3 className="text-lg font-mono text-blue-600">
                 Amount to Be Paid
               </h3>
-              <p className="text-gray-700 pt-2">
+              <p className="text-gray-700 pt-2 font-mono">
                 Price - {state.step1Data.price}
               </p>
-              <p className="text-gray-700 pt-2">
+              <p className="text-gray-700 pt-2 font-mono">
                 To be Paid Now(security) - {state.step1Data.securtiy}
               </p>
             </div>

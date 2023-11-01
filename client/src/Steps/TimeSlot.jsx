@@ -71,7 +71,9 @@ const TimeSlot = () => {
   return (
     <>
       <div className="bg-gray-100 p-8 rounded-lg shadow-md">
-        <h2 className="text-lg font-semibold mb-4">Select Your Booking Slot</h2>
+        <h2 className="text-lg font-semibold mb-4 font-mono">
+          Select Your Booking Slot
+        </h2>
 
         {/* Service selection component */}
         <DateSelector
