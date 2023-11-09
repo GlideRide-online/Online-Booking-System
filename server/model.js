@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         index: true,
-        unique: true,
     },
     firstName: {
         type: String,
@@ -30,5 +29,4 @@ const User = mongoose.model('User', userSchema);
 const BooleanData = mongoose.model('BooleanData', booleanDataSchema);
 
 
-module.exports = User;
-module.exports = BooleanData;
+module.exports = { User, BooleanData };

@@ -10,7 +10,7 @@ const jwt = require("jsonwebtoken");
 require("./passportAuth");
 const router = require("express").Router();
 const paymentRoute = require("./payment");
-const BooleanData = require("./model");
+const { BooleanData } = require("./model");
 
 //Connect MongoDB
 connectDB();
@@ -54,7 +54,6 @@ app.get(
     }),
     (req, res) => {
         const user = req.user;
-        console.log(user)
         if (user) {
             const token = jwt.sign({ user }, "your-secret-key", { expiresIn: "1h" });
             res.redirect(`http://localhost:3000/book-ride?token=${token}`);

@@ -50,6 +50,7 @@ const Service = () => {
     if (isMounted && token) {
       // Decode the JWT token to access user details
       const decodedUser = jwtDecode(token);
+      console.log(decodedUser);
       setUser(decodedUser);
 
       // Dispatch an action to update the user state

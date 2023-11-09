@@ -14,7 +14,6 @@ const PersonalDetails = () => {
   const [gender, setGender] = useState("");
   // const [collegeLibId, setCollegeLibId] = useState("");
   const [age, setAge] = useState("");
-  console.log(userstate);
   const fullname = userstate.user.firstName + " " + userstate.user.lastName;
 
   const handleSave = (e) => {
