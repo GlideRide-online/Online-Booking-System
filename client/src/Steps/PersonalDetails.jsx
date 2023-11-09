@@ -14,6 +14,7 @@ const PersonalDetails = () => {
   const [gender, setGender] = useState("");
   // const [collegeLibId, setCollegeLibId] = useState("");
   const [age, setAge] = useState("");
+  console.log(userstate);
   const fullname = userstate.user.firstName + " " + userstate.user.lastName;
 
   const handleSave = (e) => {
@@ -39,7 +40,7 @@ const PersonalDetails = () => {
       fetch({ type: "UPDATE_STEP3", payload: userPersonalData });
       message.success("Saved Succesfully");
     } else {
-      message.error("Incorrect Library Id");
+      message.error("Could Not save! Plz Try Again");
     }
   };
 
