@@ -1,6 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const User = require("./model");
+const { User } = require("./model");
 
 // middleware function
 
@@ -10,10 +10,9 @@ passport.use(
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             callbackURL: "http://localhost:4000/auth/google/callback",
-            scope: ['https://www.googleapis.com/auth/userinfo.profile', 'emai']
+            scope: ['https://www.googleapis.com/auth/userinfo.profile', 'email']
         },
         async (req, accessToken, refreshToken, profile, done) => {
-            console.log(profile.emails[0].value)
             try {
 
                 const existingUser = await User.findOne({
@@ -28,8 +27,14 @@ passport.use(
                         firstName: profile.name.givenName, // Get the user's first name
                         lastName: profile.name.familyName,
                     });
-                    await newUser.save();
-                    done(null, newUser);
+                    try {
+                        await newUser.save();
+                        done(null, newUser);
+                    } catch (error) {
+                        console.error(error);
+                        done(error);
+                    }
+
                 }
             } catch (error) {
                 console.log(error)
