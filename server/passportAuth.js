@@ -13,7 +13,9 @@ passport.use(
             scope: ['https://www.googleapis.com/auth/userinfo.profile', 'emai']
         },
         async (req, accessToken, refreshToken, profile, done) => {
+            console.log(profile.emails[0].value)
             try {
+
                 const existingUser = await User.findOne({
                     email: profile.emails[0].value,
                 });

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Loading from "../componetnts/Loading";
 import bgimg2 from "../assests/2.jpg";
-const Booking = () => {
+import NoRideAvailable from "./NoRIdeAvailable";
+const Booking = ({ showUi }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -28,6 +29,7 @@ const Booking = () => {
     backgroundColor: "#1A1110", // New background color on hover
     transform: "scale(1.05)", // Enlarge the button on hover
   };
+  console.log(showUi);
 
   useEffect(() => {
     // Simulate a delay to mimic loading (you can replace this with actual data loading)
@@ -45,44 +47,56 @@ const Booking = () => {
   const googleLogin = async () => {
     window.open("http://localhost:4000/auth/google", "_self");
   };
+
   return (
     <>
       {isLoading ? (
         <Loading />
       ) : (
         <>
-          <div
-            className={`min-h-screen bg-cover bg-center bg-no-repeat${
-              imageLoaded ? "" : "hidden"
-            }`}
-            style={{ backgroundImage: `url(${bgimg2})`, ...containerStyle }}
-          >
-            <div className=" bg-opacity-10 min-h-screen flex items-center justify-center">
-              <div className="text-center" style={textStyle}>
-                <h1 className="text-4xl font-bold mb-4">
-                  Book your ride within 5 mins
-                </h1>
-                <p className="text-lg">
-                  Explore our affordable bike rental service
-                </p>
+          {!showUi ? (
+            <>
+              <div
+                className={`min-h-screen bg-cover bg-center bg-no-repeat${
+                  imageLoaded ? "" : "hidden"
+                }`}
+                style={{ backgroundImage: `url(${bgimg2})`, ...containerStyle }}
+              >
+                <div className=" bg-opacity-10 min-h-screen flex items-center justify-center">
+                  <div className="text-center" style={textStyle}>
+                    <h1 className="text-4xl font-bold mb-4">
+                      Book your ride within 5 mins
+                    </h1>
+                    <p className="text-lg">
+                      Explore our affordable bike rental service
+                    </p>
 
-                <button
-                  onClick={googleLogin}
-                  className="py-2 px-4 rounded-full mt-4"
-                  style={{
-                    ...buttonStyle,
-                    ...(isHovered ? buttonHoverStyle : {}),
-                  }}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                >
-                  <i className="fab fa-google mr-2"></i> Proceed with Google
-                </button>
+                    <button
+                      onClick={googleLogin}
+                      className="py-2 px-4 rounded-full mt-4"
+                      style={{
+                        ...buttonStyle,
+                        ...(isHovered ? buttonHoverStyle : {}),
+                      }}
+                      onMouseEnter={() => setIsHovered(true)}
+                      onMouseLeave={() => setIsHovered(false)}
+                    >
+                      <i className="fab fa-google mr-2"></i> Proceed with Google
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <NoRideAvailable />
+              </div>
+            </>
+          )}
         </>
       )}
+      Hiii
     </>
   );
 };
