@@ -29,7 +29,6 @@ const Booking = ({ showUi }) => {
     backgroundColor: "#1A1110", // New background color on hover
     transform: "scale(1.05)", // Enlarge the button on hover
   };
-  console.log(showUi);
 
   useEffect(() => {
     // Simulate a delay to mimic loading (you can replace this with actual data loading)
