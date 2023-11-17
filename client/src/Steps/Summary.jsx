@@ -15,7 +15,6 @@ const Summary = () => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(date).toLocaleDateString(undefined, options);
   }
-
   const sentEmail = async () => {
     const config = {
       SecureToken: "75ad2317-2c13-4dc2-9966-67851d975a53",
@@ -31,6 +30,39 @@ const Summary = () => {
         <li>Time Slot: ${state.step2Data.timeSlot.start} to ${state.step2Data.timeSlot.end}</li>
         <li>Service Price: ${state.step1Data.price} (to be paid at the time of pickup)</li>
         <li>Security Deposit: ${state.step1Data.securtiy}(already paid)</li>
+      </ul>
+      <p>We hope you have a fantastic experience with us. Feel free to contact us if you have any questions or need assistance.</p>
+      <p>Safe travels!</p>
+      <p>Contact: 7310691665 (Call Us for any query)
+    `,
+    };
+    if (window.Email) {
+      const respone = await window.Email.send(config);
+      console.log(respone);
+    }
+  };
+  const sentEmailToAdmin = async () => {
+    const config = {
+      SecureToken: "75ad2317-2c13-4dc2-9966-67851d975a53",
+      To: "jainakshat423@gmail.com",
+      From: "contact@glideride.online",
+      Subject: "Congratulations! You Got A Ride!",
+      Body: `
+      <p>Dear Administrator,</p>
+      <p>You Have you got ride to give!</p>
+      <p>Booking Ride Details:</p>
+      <ul>
+        <li>Date: ${state.step2Data.date}</li>
+        <li>Time Slot: ${state.step2Data.timeSlot.start} to ${state.step2Data.timeSlot.end}</li>
+        <li>Service Price: ${state.step1Data.price} (to be paid at the time of pickup)</li>
+        <li>Security Deposit: ${state.step1Data.securtiy}(already paid)</li>
+      </ul>
+      <p> Customer Details</p>
+      <ul>
+      <li>Customer Name : ${state.step3Data.name}</li>
+      <li> Customer Whatsapp : ${state.step3Data.phoneNumber}</li>
+      <li> Customer College : ${state.step3Data.collegeName}</li>
+      <li> Customer College Year : ${state.step3Data.collegeYear}</li>
       </ul>
       <p>We hope you have a fantastic experience with us. Feel free to contact us if you have any questions or need assistance.</p>
       <p>Safe travels!</p>
@@ -97,6 +129,7 @@ const Summary = () => {
 
   const handleTestPayment = async () => {
     sentEmail();
+    sentEmailToAdmin();
     navigate("/thankyou");
   };
 
@@ -180,7 +213,7 @@ const Summary = () => {
             <div className="mt-6 grid gap-1">
               <button
                 className="bg-blue-500 font-mono hover:bg-blue-600 text-white px-6 py-2 rounded-md font-semibold transition duration-300"
-                onClick={handleTestPayment}
+                onClick={handlePayment}
               >
                 Pay Now {state.step1Data.securtiy}
               </button>

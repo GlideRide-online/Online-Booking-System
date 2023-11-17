@@ -17,7 +17,6 @@ const App = () => {
   const getBooleanValue = async () => {
     try {
       const res = await axios.get("http://localhost:4000/getBooleanValue");
-      console.log(res.data.booleanValue);
       localStorage.setItem("ShowUi", res.data.booleanValue)
       setValue(res.data.booleanValue);
     } catch (error) {
@@ -27,7 +26,6 @@ const App = () => {
   useEffect(() => {
     getBooleanValue();
   }, []);
-  console.log(value);
 
   return (
     <>
