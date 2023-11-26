@@ -78,7 +78,6 @@ const Summary = () => {
     window.location.reload();
   };
   const initPayment = (data) => {
-    console.log(data.amount);
     const options = {
       key: process.env.RAZORPAY_KEY_ID,
       amount: data.amount,
@@ -213,7 +212,7 @@ const Summary = () => {
             <div className="mt-6 grid gap-1">
               <button
                 className="bg-blue-500 font-mono hover:bg-blue-600 text-white px-6 py-2 rounded-md font-semibold transition duration-300"
-                onClick={handlePayment}
+                onClick={handleTestPayment}
               >
                 Pay Now {state.step1Data.securtiy}
               </button>

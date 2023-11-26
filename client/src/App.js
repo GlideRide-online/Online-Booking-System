@@ -5,9 +5,7 @@ import Navbar from "./componetnts/Navbar";
 import ThankYou from "./pages/ThankYou";
 import { UserProvider } from "./contexts/UserContext";
 import { BookingProvider } from "./contexts/BookingDataContext";
-// import NoRIdeAvailable from "./pages/NoRIdeAvailable";
 import DisableUiButton from "./componetnts/DisableUiButton";
-// import ShowUi from "./componetnts/ShowUi";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
