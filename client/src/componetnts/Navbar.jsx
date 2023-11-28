@@ -45,32 +45,38 @@ const Navbar = () => {
         ) : (
           <>
             <div className="text-center">
-              <button
-                className="hover:bg-blue-500"
-                style={{ ...buttonStyle }}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor =
-                    buttonHoverStyle.backgroundColor;
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = buttonStyle.backgroundColor;
-                }}
-              >
-                Explore More
-              </button>
-              <button
-                className="hover:bg-blue-500"
-                style={{ ...buttonStyle }}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor =
-                    buttonHoverStyle.backgroundColor;
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = buttonStyle.backgroundColor;
-                }}
-              >
-                Follow Us
-              </button>
+              <a href="https://glideride.online/">
+                <button
+                  className="hover:bg-blue-500"
+                  style={{ ...buttonStyle }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor =
+                      buttonHoverStyle.backgroundColor;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor =
+                      buttonStyle.backgroundColor;
+                  }}
+                >
+                  Explore More
+                </button>
+              </a>
+              <a href="https://www.instagram.com/glideride.online/">
+                <button
+                  className="hover:bg-blue-500"
+                  style={{ ...buttonStyle }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor =
+                      buttonHoverStyle.backgroundColor;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor =
+                      buttonStyle.backgroundColor;
+                  }}
+                >
+                  Follow Us
+                </button>
+              </a>
             </div>
           </>
         )}
