@@ -1,17 +1,19 @@
 import { message } from "antd";
-import React, { useState } from "react";
+import React from "react";
 
 const NoRIdeAvailable = () => {
-  const [whatsappNumber, setWhatsappNumber] = useState("");
-
-  const handleNumberChange = (e) => {
-    setWhatsappNumber(e.target.value);
-  };
   const addToWaitingList = (e) => {
     e.preventDefault();
-    console.log("User's WhatsApp number:", whatsappNumber);
+    sendMessage();
     message.success("Thanks for your Patience!");
-    setWhatsappNumber("");
+  };
+  const sendMessage = () => {
+    // let number = whatsappNumber.replace(/[^\w\s]/gi, "").replace(/ /g, "");
+    let url = `https://web.whatsapp.com/send?phone=${process.env.REACT_APP_NUMBER}`;
+    url += `&text=${encodeURI(
+      "Hi Glideride! Please add me to waiting list and Notify me as soon as ride is possible"
+    )}&app_absent=0`;
+    window.open(url);
   };
   return (
     <form onSubmit={addToWaitingList}>
@@ -30,21 +32,11 @@ const NoRIdeAvailable = () => {
             htmlFor="whatsappNumber"
             className="block text-gray-600 text-sm"
           >
-            WhatsApp Number
+            Click Here to add You to our waiting List
           </label>
-
-          <input
-            type="text"
-            id="whatsappNumber"
-            className="block w-full bg-gray-100 text-gray-800 border border-gray-300 rounded-md p-2 focus:outline-none focus:border-blue-400"
-            placeholder="Enter your WhatsApp number"
-            value={whatsappNumber}
-            onChange={handleNumberChange}
-            required
-          />
         </div>
         <button className="bg-yellow-500 text-black font-sans px-4 py-2 rounded-md">
-          Notify Me
+          Add Me!
         </button>
       </div>
     </form>

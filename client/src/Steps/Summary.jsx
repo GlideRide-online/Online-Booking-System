@@ -79,7 +79,7 @@ const Summary = () => {
   };
   const initPayment = (data) => {
     const options = {
-      key: process.env.RAZORPAY_KEY_ID,
+      key: process.env.REACT_APP_RAZORPAY_KEY_ID,
       amount: data.amount,
       currency: data.currency,
       name: "GlideRide",
@@ -93,6 +93,7 @@ const Summary = () => {
 
           if (data.success) {
             sentEmail();
+            sentEmailToAdmin();
             navigate("/thankyou");
           } else {
             console.log("something went wrong");
@@ -126,11 +127,11 @@ const Summary = () => {
     }
   };
 
-  const handleTestPayment = async () => {
-    sentEmail();
-    sentEmailToAdmin();
-    navigate("/thankyou");
-  };
+  // const handleTestPayment = async () => {
+  //   sentEmail();
+  //   sentEmailToAdmin();
+  //   navigate("/thankyou");
+  // };
 
   return (
     <>
@@ -212,7 +213,7 @@ const Summary = () => {
             <div className="mt-6 grid gap-1">
               <button
                 className="bg-blue-500 font-mono hover:bg-blue-600 text-white px-6 py-2 rounded-md font-semibold transition duration-300"
-                onClick={handleTestPayment}
+                onClick={handlePayment}
               >
                 Pay Now {state.step1Data.securtiy}
               </button>
