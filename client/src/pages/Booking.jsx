@@ -64,7 +64,7 @@ const Booking = ({ showUi }) => {
                 <div className=" bg-opacity-10 min-h-screen flex items-center justify-center">
                   <div className="text-center" style={textStyle}>
                     <h1 className="text-4xl font-bold mb-4">
-                      Book your ride within 5 mins
+                      Book your ride within 2 mins
                     </h1>
                     <p className="text-lg">
                       Explore our affordable bike rental service
