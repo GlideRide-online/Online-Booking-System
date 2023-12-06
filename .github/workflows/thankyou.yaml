@@ -12,5 +12,6 @@ jobs:
     steps:
       - name: Thank You Message
         run: |
-          echo "Thank you for making the pull request, @${{ github.actor }}!"
-          echo "Your contribution is appreciated. 🙌"
+          PR_NUMBER=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+          COMMENT="Thank you for making the pull request, @${{ github.actor }}! Your contribution is appreciated. 🙌"
+          curl -sSL -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" -d '{"body":"'"$COMMENT"'"}' -H "Content-Type: application/json" -X POST "https://api.github.com/repos/${{ github.repository }}/issues/${PR_NUMBER}/comments"
