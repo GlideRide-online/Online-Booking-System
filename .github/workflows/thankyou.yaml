@@ -1,0 +1,16 @@
+name: Thank You on Pull Request
+
+on:
+  pull_request:
+    types:
+      - opened
+
+jobs:
+  thankyou:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Thank You Message
+        run: |
+          echo "Thank you for making the pull request, @${{ github.actor }}!"
+          echo "Your contribution is appreciated. 🙌"
