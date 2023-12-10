@@ -44,7 +44,7 @@ const Booking = ({ showUi }) => {
   }, []);
 
   const googleLogin = async () => {
-    window.open("http://localhost:4000/auth/google", "_self");
+    window.open("https://glideride.onrender.com/auth/google", "_self");
   };
 
   return (
