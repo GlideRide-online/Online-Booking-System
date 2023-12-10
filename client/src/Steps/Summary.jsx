@@ -88,7 +88,8 @@ const Summary = () => {
       order_id: data.id,
       handler: async (response) => {
         try {
-          const verifyUrl = "http://localhost:4000/api/checkout/verify";
+          const verifyUrl =
+            "https://glideride.onrender.com/api/checkout/verify";
           const { data } = await axios.post(verifyUrl, response);
 
           if (data.success) {
@@ -118,7 +119,7 @@ const Summary = () => {
   const handlePayment = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:4000/api/checkout/orders",
+        "https://glideride.onrender.com/api/checkout/orders",
         { amount: numericValue }
       );
       initPayment(response.data.order);

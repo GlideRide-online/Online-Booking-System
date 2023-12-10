@@ -6,7 +6,7 @@ const DisableUiButton = () => {
   const handleDisable = async () => {
     console.log("ui disable");
     try {
-      const res = await axios.post("http://localhost:4000/updateUi", {
+      const res = await axios.post("https://glideride.onrender.com/updateUi", {
         booleanValue: true,
       });
       message.success("Ui Disabled successfully");
@@ -18,7 +18,7 @@ const DisableUiButton = () => {
   const handleActivate = async () => {
     console.log("Ui Activated");
     try {
-      const res = await axios.post("http://localhost:4000/updateUi", {
+      const res = await axios.post("https://glideride.onrender.com/updateUi", {
         booleanValue: false,
       });
       message.success("Ui Activated successfully");

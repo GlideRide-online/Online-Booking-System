@@ -14,7 +14,7 @@ const App = () => {
   const [value, setValue] = useState(false);
   const getBooleanValue = async () => {
     try {
-      const res = await axios.get("http://localhost:4000/getBooleanValue");
+      const res = await axios.get("https://glideride.onrender.com/getBooleanValue");
       localStorage.setItem("ShowUi", res.data.booleanValue)
       setValue(res.data.booleanValue);
     } catch (error) {
