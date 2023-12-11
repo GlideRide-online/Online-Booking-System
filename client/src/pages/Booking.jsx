@@ -44,7 +44,7 @@ const Booking = ({ showUi }) => {
   }, []);
 
   const googleLogin = async () => {
-    window.open("https://glideride.onrender.com/auth/google", "_self");
+    window.open(`${process.env.REACT_APP_SECRETROUTE}/auth/google`, "_self");
   };
 
   return (
@@ -95,7 +95,6 @@ const Booking = ({ showUi }) => {
           )}
         </>
       )}
-      Hiii
     </>
   );
 };

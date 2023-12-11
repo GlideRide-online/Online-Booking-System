@@ -6,9 +6,12 @@ const DisableUiButton = () => {
   const handleDisable = async () => {
     console.log("ui disable");
     try {
-      const res = await axios.post("https://glideride.onrender.com/updateUi", {
-        booleanValue: true,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_SECRETROUTE}/updateUi`,
+        {
+          booleanValue: true,
+        }
+      );
       message.success("Ui Disabled successfully");
       console.log(res.data);
     } catch (error) {
@@ -18,9 +21,12 @@ const DisableUiButton = () => {
   const handleActivate = async () => {
     console.log("Ui Activated");
     try {
-      const res = await axios.post("https://glideride.onrender.com/updateUi", {
-        booleanValue: false,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_SECRETROUTE}/updateUi`,
+        {
+          booleanValue: false,
+        }
+      );
       message.success("Ui Activated successfully");
       console.log(res.data);
     } catch (error) {
