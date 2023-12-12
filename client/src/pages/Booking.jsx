@@ -63,10 +63,10 @@ const Booking = ({ showUi }) => {
               >
                 <div className=" bg-opacity-10 min-h-screen flex items-center justify-center">
                   <div className="text-center" style={textStyle}>
-                    <h1 className="text-4xl font-bold mb-4">
+                    <h1 className="text-4xl font-roboto mb-4">
                       Book your ride within 2 mins
                     </h1>
-                    <p className="text-lg">
+                    <p className="text-lg font-roboto">
                       Explore our affordable bike rental service
                     </p>
 
@@ -80,7 +80,8 @@ const Booking = ({ showUi }) => {
                       onMouseEnter={() => setIsHovered(true)}
                       onMouseLeave={() => setIsHovered(false)}
                     >
-                      <i className="fab fa-google mr-2"></i> Proceed with Google
+                      <i className="font-robot fab fa-google mr-2"></i> Proceed
+                      with Google
                     </button>
                   </div>
                 </div>

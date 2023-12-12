@@ -37,7 +37,7 @@ const Navbar = () => {
         {token ? (
           <>
             <div className="flex justify-center items-center">
-              <h2 className="text-white font-mono ">
+              <h2 className="text-white font-roboto">
                 Please Don't Refresh the Page!!
               </h2>
             </div>
@@ -45,9 +45,9 @@ const Navbar = () => {
         ) : (
           <>
             <div className="text-center">
-              <a href="https://glideride.online/">
+              <a href="https://glideride.online">
                 <button
-                  className="hover:bg-blue-500"
+                  className="hover:bg-blue-500 font-roboto"
                   style={{ ...buttonStyle }}
                   onMouseEnter={(e) => {
                     e.target.style.backgroundColor =
@@ -63,7 +63,7 @@ const Navbar = () => {
               </a>
               <a href="https://www.instagram.com/glideride.online/">
                 <button
-                  className="hover:bg-blue-500"
+                  className="hover:bg-blue-500 font-roboto"
                   style={{ ...buttonStyle }}
                   onMouseEnter={(e) => {
                     e.target.style.backgroundColor =
