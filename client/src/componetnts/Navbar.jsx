@@ -15,7 +15,7 @@ const Navbar = () => {
     padding: "8px 16px",
     margin: "0 10px",
     transition: "background-color 0.3s",
-    fontFamily: "Pacifico, cursive", // Font family (use your chosen font)
+    // Font family (use your chosen font)
   };
 
   const buttonHoverStyle = {
@@ -44,10 +44,10 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <div className="text-center">
+            <div className="text-center font-roboto">
               <a href="https://glideride.online">
                 <button
-                  className="hover:bg-blue-500 font-roboto"
+                  className="font-roboto hover:bg-blue-500"
                   style={{ ...buttonStyle }}
                   onMouseEnter={(e) => {
                     e.target.style.backgroundColor =

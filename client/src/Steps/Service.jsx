@@ -35,6 +35,8 @@ const Service = () => {
       duration: 8,
     },
   ];
+
+  console.log(localStorage.getItem("ShowUi"));
   const handleServiceSelect = (service) => {
     setSelectedService(service);
     fetch({ type: "UPDATE_STEP1", payload: service });

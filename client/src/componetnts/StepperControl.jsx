@@ -10,7 +10,7 @@ const StepperControl = ({ handleClick, steps, currentStep }) => {
         {/* back button */}
         <button
           onClick={() => handleClick()}
-          className={`bg-white text-slate-400 uppercase py-2 px-4
+          className={`bg-white font-roboto text-slate-400 uppercase py-2 px-4
 rounded-xl  cursor-pointer border-2 border-slate-
 hover:bg-black hover:text-white transition duration-200
 ease-in-out ${currentStep === 1 ? "opcity-50 cursor-not-allowed" : ""}`}
@@ -22,7 +22,7 @@ ease-in-out ${currentStep === 1 ? "opcity-50 cursor-not-allowed" : ""}`}
         {/* next button */}
         <button
           onClick={() => handleClick("next")}
-          className="bg-yellow-400 Itext-white uppercase py-2 px-4
+          className="bg-yellow-400 font-roboto Itext-white uppercase py-2 px-4
 rounded-xl font-semibold cursor-pointer hover:bg-black
 hover:text-white transition duration-200 ease-in-out"
           style={textStyle}
