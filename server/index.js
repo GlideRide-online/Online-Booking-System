@@ -56,7 +56,7 @@ app.get(
         const user = req.user;
         if (user) {
             const token = jwt.sign({ user }, "your-secret-key", { expiresIn: "1h" });
-            res.redirect(`https://bookyourride.onrender.com/book-ride?token=${token}`);
+            res.redirect(`${process.env.SECRET_CLIENT_URL}/book-ride?token=${token}`);
         } else {
             console.log("user not found");
         }

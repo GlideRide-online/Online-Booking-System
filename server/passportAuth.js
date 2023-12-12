@@ -9,7 +9,7 @@ passport.use(
         {
             clientID: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-            callbackURL: "https://glideride.onrender.com/auth/google/callback",
+            callbackURL: `${process.env.SECRET_CALLBACK_URL}/auth/google/callback`,
             scope: ['https://www.googleapis.com/auth/userinfo.profile', 'email']
         },
         async (req, accessToken, refreshToken, profile, done) => {
