@@ -80,8 +80,10 @@ const Booking = ({ showUi }) => {
                       onMouseEnter={() => setIsHovered(true)}
                       onMouseLeave={() => setIsHovered(false)}
                     >
-                      <i className="font-robot fab fa-google mr-2"></i> Proceed
-                      with Google
+                      <span className="font-roboto">
+                        <i className="fab fa-google mr-2"></i> Proceed with
+                        Google
+                      </span>
                     </button>
                   </div>
                 </div>
