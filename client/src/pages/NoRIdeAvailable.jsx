@@ -9,11 +9,8 @@ const NoRIdeAvailable = () => {
   };
   const sendMessage = () => {
     // let number = whatsappNumber.replace(/[^\w\s]/gi, "").replace(/ /g, "");
-    let url = `https://web.whatsapp.com/send?phone=${process.env.REACT_APP_NUMBER}`;
-    url += `&text=${encodeURI(
-      "Hi Glideride! Please add me to waiting list and Notify me as soon as ride is possible"
-    )}&app_absent=0`;
-    window.open(url);
+    const number = process.env.REACT_APP_NUMBER;
+    window.location.href = `tel:${number}`;
   };
   return (
     <form onSubmit={addToWaitingList}>
@@ -32,11 +29,11 @@ const NoRIdeAvailable = () => {
             htmlFor="whatsappNumber"
             className="block text-gray-600 text-sm"
           >
-            Click Here to add You to our waiting List
+            Call Us to add you to our waiting list
           </label>
         </div>
         <button className="bg-yellow-500 text-black font-sans px-4 py-2 rounded-md">
-          Add Me!
+          Call 7310691665
         </button>
       </div>
     </form>
