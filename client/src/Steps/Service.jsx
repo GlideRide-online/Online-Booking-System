@@ -6,9 +6,12 @@ import img from "../assests/service.png";
 import { Link } from "react-router-dom";
 import { useBooking } from "../contexts/BookingDataContext";
 import { message } from "antd";
+import axios from "axios";
+import NoRIdeAvailable from "../pages/NoRIdeAvailable";
 const Service = () => {
   const location = useLocation();
   const [selectedService, setSelectedService] = useState(null);
+  const [value, setValue] = useState(false);
   const [user, setUser] = useState(null);
   const { dispatch } = useUser();
   const { fetch } = useBooking();
@@ -35,14 +38,25 @@ const Service = () => {
       duration: 8,
     },
   ];
-
-  console.log(localStorage.getItem("ShowUi"));
+  const getBooleanValue = async () => {
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_SECRETROUTE}/getBooleanValue`
+      );
+      localStorage.setItem("ShowUi", res.data.booleanValue);
+      setValue(res.data.booleanValue);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleServiceSelect = (service) => {
     setSelectedService(service);
     fetch({ type: "UPDATE_STEP1", payload: service });
     message.success("Service Selected");
   };
   useEffect(() => {
+    // get the value of the show ui or not
+    getBooleanValue();
     // Create a flag to track whether the effect has already run
     let isMounted = true;
 
@@ -81,43 +95,51 @@ const Service = () => {
         </>
       ) : (
         <>
-          <h2 className="text-3xl font-bold text-black mb-6 font-mono">
-            Select a Service
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {services.map((service, index) => (
-              <div
-                key={service.id}
-                className={`border p-4 cursor-pointer transition duration-300 ${
-                  selectedService === service
-                    ? "bg-slate-500"
-                    : "border-gray-300 hover:border-black hover:transform hover:scale-105"
-                }`}
-                onClick={() => handleServiceSelect(service)}
-              >
-                <div className="flex">
-                  {/* Left-hand side: Image */}
-                  <img
-                    src={img}
-                    alt={service.name}
-                    className="w-24 h-24 rounded-lg mr-4" // Adjust width and height as needed
-                  />
-                  {/* Right-hand side: Service name and price */}
-                  <div>
-                    <h3 className="text-lg font-semibold font-mono">
-                      {service.name}
-                    </h3>
-                    <p className="text-gray-600 font-mono">
-                      Price - {service.price}
-                    </p>
-                    <p className="text-gray-600 font-mono">
-                      Security - {service.securtiy}
-                    </p>
+          {!value ? (
+            <>
+              <h2 className="text-3xl font-bold text-black mb-6 font-mono">
+                Select a Service
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {services.map((service, index) => (
+                  <div
+                    key={service.id}
+                    className={`border p-4 cursor-pointer transition duration-300 ${
+                      selectedService === service
+                        ? "bg-slate-500"
+                        : "border-gray-300 hover:border-black hover:transform hover:scale-105"
+                    }`}
+                    onClick={() => handleServiceSelect(service)}
+                  >
+                    <div className="flex">
+                      {/* Left-hand side: Image */}
+                      <img
+                        src={img}
+                        alt={service.name}
+                        className="w-24 h-24 rounded-lg mr-4" // Adjust width and height as needed
+                      />
+                      {/* Right-hand side: Service name and price */}
+                      <div>
+                        <h3 className="text-lg font-semibold font-mono">
+                          {service.name}
+                        </h3>
+                        <p className="text-gray-600 font-mono">
+                          Price - {service.price}
+                        </p>
+                        <p className="text-gray-600 font-mono">
+                          Security - {service.securtiy}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
+            </>
+          ) : (
+            <>
+              <NoRIdeAvailable />
+            </>
+          )}
         </>
       )}
     </>
