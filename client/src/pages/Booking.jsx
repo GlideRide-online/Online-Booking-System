@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Loading from "../componetnts/Loading";
 import bgimg2 from "../assests/2.jpg";
 import NoRideAvailable from "./NoRIdeAvailable";
+import { message } from "antd";
 const Booking = ({ showUi }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
@@ -44,6 +45,7 @@ const Booking = ({ showUi }) => {
   }, []);
 
   const googleLogin = async () => {
+    message.success("Please Wait! This may take few seconds");
     window.open(`${process.env.REACT_APP_SECRETROUTE}/auth/google`, "_self");
   };
 
