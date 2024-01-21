@@ -2,11 +2,17 @@ import React, { useState, useEffect } from "react";
 import Loading from "../componetnts/Loading";
 import bgimg2 from "../assests/2.jpg";
 import NoRideAvailable from "./NoRIdeAvailable";
-import { message } from "antd";
+// import { message } from "antd";
+import Notification from "../componetnts/Notification";
 const Booking = ({ showUi }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [notification, setNotification] = useState({
+    message: "",
+    duration: 10,
+    isVisible: false,
+  });
   const containerStyle = {
     backgroundColor: "#0A192F", // Background color
   };
@@ -43,9 +49,19 @@ const Booking = ({ showUi }) => {
     }, 2000); // Adjust the delay as needed
     return () => clearTimeout(loadingTimeout);
   }, []);
+  // Notification
+  const showNotification = (message, duration = 10) => {
+    setNotification({ message, duration, isVisible: true });
 
+    const timer = setTimeout(() => {
+      setNotification({ ...notification, isVisible: false });
+    }, duration * 1000);
+
+    return () => clearTimeout(timer);
+  };
+  // google login invoke
   const googleLogin = async () => {
-    message.success("Please Wait! This may take few seconds");
+    showNotification("Please Wait! This may take a few seconds");
     window.open(`${process.env.REACT_APP_SECRETROUTE}/auth/google`, "_self");
   };
 
@@ -99,6 +115,13 @@ const Booking = ({ showUi }) => {
             </>
           )}
         </>
+      )}
+      {notification.isVisible && (
+        <Notification
+          message={notification.message}
+          duration={notification.duration}
+          onClose={() => setNotification({ ...notification, isVisible: false })}
+        />
       )}
     </>
   );
