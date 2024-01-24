@@ -10,7 +10,7 @@ const Booking = ({ showUi }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [notification, setNotification] = useState({
     message: "",
-    duration: 10,
+    duration: 20,
     isVisible: false,
   });
   const containerStyle = {
